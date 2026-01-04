@@ -6,96 +6,339 @@
   <title>Lumora OS – The Future of Linux</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 20% 30%, #2a0a64, #09090b);
+      background: #0a0a0f;
       color: white;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+    
+    .gradient-bg {
+      background: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.3), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.2), transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.15), transparent 70%);
+    }
+    
     .glass {
-      backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(15, 15, 25, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .glow-pulse {
+      animation: glow 3s ease-in-out infinite;
+    }
+    
+    .slide-in {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #a855f7, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent);
+      top: 10%;
+      left: 10%;
+    }
+    
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
+      bottom: 20%;
+      right: 10%;
+      animation-delay: -4s;
+    }
+    
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .feature-card:hover::before {
+      left: 100%;
+    }
+    
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #a855f7, #3b82f6);
+      transition: width 0.3s;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .rotate-slow {
+      animation: rotate 20s linear infinite;
+    }
+    
+    .perspective-card {
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    
+    .perspective-card:hover {
+      transform: rotateY(5deg) rotateX(5deg);
     }
   </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="gradient-bg">
+  
+  <!-- Animated Background Orbs -->
+  <div class="orb orb-1 -z-10"></div>
+  <div class="orb orb-2 -z-10"></div>
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full glass z-50 flex justify-between items-center px-8 py-4">
-    <h1 class="text-2xl font-extrabold text-white">Lumora<span class="text-purple-400">OS</span></h1>
+  <nav class="fixed top-0 left-0 w-full glass z-50 flex justify-between items-center px-8 py-4 transition-all duration-300">
+    <h1 class="text-2xl font-black">Lumora<span class="gradient-text">OS</span></h1>
     <div class="space-x-8 hidden md:flex">
-      <a href="#features" class="hover:text-purple-400 transition">Features</a>
-      <a href="#showcase" class="hover:text-purple-400 transition">Showcase</a>
-      <a href="#download" class="hover:text-purple-400 transition">Download</a>
+      <a href="#features" class="nav-link hover:text-purple-400 transition font-semibold">Features</a>
+      <a href="#showcase" class="nav-link hover:text-purple-400 transition font-semibold">Showcase</a>
+      <a href="#download" class="nav-link hover:text-purple-400 transition font-semibold">Download</a>
     </div>
+    <button class="md:hidden text-2xl">☰</button>
   </nav>
 
   <!-- Hero -->
-  <section class="pt-48 pb-32 text-center relative">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-purple-600/40 via-indigo-600/30 to-blue-600/20 blur-3xl"></div>
-    <h1 class="text-6xl md:text-7xl font-extrabold mb-6">Lumora OS</h1>
-    <p class="text-xl md:text-2xl text-gray-300 mb-10">The Linux system that does <span class="text-purple-400 font-semibold">everything</span>.</p>
-    <a href="#download" class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105">Get Lumora OS</a>
-    <div class="mt-20 flex justify-center">
-      <img src="https://via.placeholder.com/1200x600/1E1E2F/FFFFFF?text=Lumora+OS+Desktop" alt="Lumora OS Desktop" class="rounded-2xl shadow-2xl w-3/4 hover:scale-105 transition duration-700">
+  <section class="pt-48 pb-32 text-center relative px-6">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-[120px] glow-pulse"></div>
+    </div>
+    
+    <div class="slide-in" style="animation-delay: 0.1s; opacity: 0;">
+      <div class="inline-block mb-6 px-6 py-2 rounded-full glass border border-purple-500/50">
+        <span class="text-purple-400 font-semibold">✨ Version 1.0 Now Available</span>
+      </div>
+    </div>
+    
+    <h1 class="text-7xl md:text-8xl font-black mb-6 slide-in" style="animation-delay: 0.2s; opacity: 0;">
+      Lumora <span class="gradient-text">OS</span>
+    </h1>
+    
+    <p class="text-xl md:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto slide-in" style="animation-delay: 0.3s; opacity: 0;">
+      The Linux system that does <span class="text-purple-400 font-bold">everything</span>.
+      <br>
+      <span class="text-lg text-gray-400">Fast. Secure. Beautiful.</span>
+    </p>
+    
+    <div class="slide-in" style="animation-delay: 0.4s; opacity: 0;">
+      <a href="#download" class="btn-primary inline-block bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold px-12 py-5 rounded-full text-lg transition-all duration-300 transform hover:scale-110 shadow-2xl shadow-purple-500/50">
+        <span class="relative z-10">Get Lumora OS →</span>
+      </a>
+    </div>
+    
+    <div class="mt-24 flex justify-center slide-in" style="animation-delay: 0.5s; opacity: 0;">
+      <div class="relative float-animation">
+        <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-50"></div>
+        <img src="https://via.placeholder.com/1200x600/0f0f19/FFFFFF?text=Lumora+OS+Desktop" alt="Lumora OS Desktop" class="relative rounded-3xl shadow-2xl w-full max-w-5xl border border-purple-500/30 perspective-card">
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-24 px-8">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+      <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+        <div class="text-5xl font-black gradient-text mb-2">10K+</div>
+        <div class="text-gray-400">Active Users</div>
+      </div>
+      <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+        <div class="text-5xl font-black gradient-text mb-2">99.9%</div>
+        <div class="text-gray-400">Uptime</div>
+      </div>
+      <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+        <div class="text-5xl font-black gradient-text mb-2">0.5s</div>
+        <div class="text-gray-400">Boot Time</div>
+      </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-32 px-8 md:px-24 bg-gray-900/50 glass rounded-3xl mx-6 md:mx-20 shadow-2xl">
-    <h2 class="text-4xl font-bold text-center mb-20">Why Lumora OS?</h2>
-    <div class="grid md:grid-cols-3 gap-12">
-      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
-        <h3 class="text-2xl font-bold mb-3 text-purple-400">All-in-One</h3>
-        <p>Desktop, Server, Developer, Gamer – Lumora OS adapts to you. Everything works right out of the box.</p>
+  <section id="features" class="py-32 px-8 md:px-24 relative">
+    <div class="absolute top-1/2 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]"></div>
+    
+    <h2 class="text-5xl md:text-6xl font-black text-center mb-8">
+      Why <span class="gradient-text">Lumora OS</span>?
+    </h2>
+    <p class="text-center text-gray-400 text-lg mb-20 max-w-2xl mx-auto">
+      Built for developers, designers, and power users who demand the best.
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="feature-card glass p-10 rounded-3xl hover:scale-105 transition duration-500 hover:border-purple-500/50">
+        <div class="text-5xl mb-6">🚀</div>
+        <h3 class="text-2xl font-bold mb-4 text-purple-400">All-in-One</h3>
+        <p class="text-gray-300 leading-relaxed">Desktop, Server, Developer, Gamer – Lumora OS adapts to you. Everything works right out of the box.</p>
       </div>
-      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
-        <h3 class="text-2xl font-bold mb-3 text-purple-400">Optimized Performance</h3>
-        <p>Lightning-fast startup, minimal resource usage, and a seamless multitasking experience.</p>
+      
+      <div class="feature-card glass p-10 rounded-3xl hover:scale-105 transition duration-500 hover:border-purple-500/50" style="transition-delay: 0.1s;">
+        <div class="text-5xl mb-6">⚡</div>
+        <h3 class="text-2xl font-bold mb-4 text-purple-400">Optimized Performance</h3>
+        <p class="text-gray-300 leading-relaxed">Lightning-fast startup, minimal resource usage, and a seamless multitasking experience.</p>
       </div>
-      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
-        <h3 class="text-2xl font-bold mb-3 text-purple-400">Secure by Design</h3>
-        <p>Privacy-focused architecture, encrypted core updates, and state-of-the-art firewall protection.</p>
+      
+      <div class="feature-card glass p-10 rounded-3xl hover:scale-105 transition duration-500 hover:border-purple-500/50" style="transition-delay: 0.2s;">
+        <div class="text-5xl mb-6">🔒</div>
+        <h3 class="text-2xl font-bold mb-4 text-purple-400">Secure by Design</h3>
+        <p class="text-gray-300 leading-relaxed">Privacy-focused architecture, encrypted core updates, and state-of-the-art firewall protection.</p>
       </div>
     </div>
   </section>
 
   <!-- Showcase -->
-  <section id="showcase" class="py-32 text-center relative">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-purple-800/30 via-blue-700/20 to-transparent blur-3xl"></div>
-    <h2 class="text-4xl font-bold mb-12">Experience the Interface</h2>
-    <p class="text-gray-300 mb-16 max-w-3xl mx-auto text-lg">A clean, minimal, and powerful interface designed for productivity and beauty. Lumora OS redefines what Linux can look like.</p>
-    <img src="https://via.placeholder.com/1200x600/101010/FFFFFF?text=Modern+Lumora+UI" alt="Lumora OS UI" class="rounded-2xl shadow-2xl mx-auto w-3/4 hover:scale-105 transition duration-700">
+  <section id="showcase" class="py-32 text-center relative px-6">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]"></div>
+    
+    <h2 class="text-5xl md:text-6xl font-black mb-6">
+      Experience the <span class="gradient-text">Interface</span>
+    </h2>
+    <p class="text-gray-300 mb-20 max-w-3xl mx-auto text-lg leading-relaxed">
+      A clean, minimal, and powerful interface designed for productivity and beauty. Lumora OS redefines what Linux can look like.
+    </p>
+    
+    <div class="relative max-w-6xl mx-auto">
+      <div class="absolute -inset-6 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 rounded-3xl blur-3xl opacity-30 rotate-slow"></div>
+      <img src="https://via.placeholder.com/1200x600/0a0a0f/FFFFFF?text=Modern+Lumora+UI" alt="Lumora OS UI" class="relative rounded-3xl shadow-2xl w-full border border-purple-500/30 hover:scale-105 transition duration-700 perspective-card">
+    </div>
   </section>
 
   <!-- Download -->
-  <section id="download" class="py-32 px-6 md:px-20 bg-gradient-to-r from-purple-700 to-indigo-700 text-center rounded-t-3xl shadow-inner">
-    <h2 class="text-5xl font-bold mb-8">Download Lumora OS v1.0</h2>
-    <p class="text-lg text-gray-200 mb-16">Choose your version and start your journey today.</p>
-    <div class="flex flex-col md:flex-row justify-center gap-10">
-      <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/desktop.iso"
-         class="bg-white text-purple-700 font-bold px-10 py-5 rounded-2xl hover:bg-gray-200 transition text-lg shadow-lg transform hover:scale-105">
-         💻 Desktop Version
-      </a>
-      <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/server.iso"
-         class="bg-gray-900 text-white font-bold px-10 py-5 rounded-2xl border border-gray-700 hover:border-white transition text-lg shadow-lg transform hover:scale-105">
-         🖥️ Server Version
-      </a>
+  <section id="download" class="py-32 px-6 md:px-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-blue-900/30 to-transparent"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[150px]"></div>
+    
+    <div class="relative z-10 text-center">
+      <h2 class="text-5xl md:text-7xl font-black mb-6">
+        Download <span class="gradient-text">Lumora OS</span>
+      </h2>
+      <p class="text-xl text-gray-300 mb-16 max-w-2xl mx-auto">
+        Choose your version and start your journey today. Free and open-source forever.
+      </p>
+      
+      <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
+        <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/desktop.iso"
+           class="btn-primary glass p-10 rounded-3xl hover:scale-105 transition duration-300 border border-purple-500/50 hover:border-purple-400 group">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition duration-300">💻</div>
+          <div class="text-2xl font-bold mb-2">Desktop Version</div>
+          <div class="text-gray-400">Perfect for daily use</div>
+        </a>
+        
+        <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/server.iso"
+           class="btn-primary glass p-10 rounded-3xl hover:scale-105 transition duration-300 border border-blue-500/50 hover:border-blue-400 group">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition duration-300">🖥️</div>
+          <div class="text-2xl font-bold mb-2">Server Version</div>
+          <div class="text-gray-400">Built for performance</div>
+        </a>
+      </div>
+      
+      <p class="text-sm text-gray-500 mt-12">Version 1.0 • Released 2025 • 2.4 GB ISO</p>
     </div>
-    <p class="text-sm text-gray-300 mt-8">Version 1.0 • Released 2025</p>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-950 py-12 text-center">
-    <p class="text-gray-500">&copy; 2025 Lumora OS. Built with passion and open-source power.</p>
-    <div class="flex justify-center gap-8 mt-6 text-gray-400">
-      <a href="#" class="hover:text-white transition">GitHub</a>
-      <a href="#" class="hover:text-white transition">Discord</a>
-      <a href="#" class="hover:text-white transition">Docs</a>
+  <footer class="glass py-16 text-center border-t border-gray-800">
+    <h3 class="text-2xl font-bold mb-4">Lumora<span class="gradient-text">OS</span></h3>
+    <p class="text-gray-500 mb-8">Built with passion and open-source power.</p>
+    <div class="flex justify-center gap-10 text-gray-400 mb-8">
+      <a href="#" class="hover:text-purple-400 transition transform hover:scale-110">GitHub</a>
+      <a href="#" class="hover:text-purple-400 transition transform hover:scale-110">Discord</a>
+      <a href="#" class="hover:text-purple-400 transition transform hover:scale-110">Docs</a>
+      <a href="#" class="hover:text-purple-400 transition transform hover:scale-110">Blog</a>
     </div>
+    <p class="text-gray-600 text-sm">&copy; 2025 Lumora OS. All rights reserved.</p>
   </footer>
 
 </body>
