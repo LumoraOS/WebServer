@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumora OS – The Future of Linux</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 20% 30%, #2a0a64, #09090b);
+      color: white;
+      scroll-behavior: smooth;
+    }
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full glass z-50 flex justify-between items-center px-8 py-4">
+    <h1 class="text-2xl font-extrabold text-white">Lumora<span class="text-purple-400">OS</span></h1>
+    <div class="space-x-8 hidden md:flex">
+      <a href="#features" class="hover:text-purple-400 transition">Features</a>
+      <a href="#showcase" class="hover:text-purple-400 transition">Showcase</a>
+      <a href="#download" class="hover:text-purple-400 transition">Download</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-48 pb-32 text-center relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-purple-600/40 via-indigo-600/30 to-blue-600/20 blur-3xl"></div>
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-6">Lumora OS</h1>
+    <p class="text-xl md:text-2xl text-gray-300 mb-10">The Linux system that does <span class="text-purple-400 font-semibold">everything</span>.</p>
+    <a href="#download" class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105">Get Lumora OS</a>
+    <div class="mt-20 flex justify-center">
+      <img src="https://via.placeholder.com/1200x600/1E1E2F/FFFFFF?text=Lumora+OS+Desktop" alt="Lumora OS Desktop" class="rounded-2xl shadow-2xl w-3/4 hover:scale-105 transition duration-700">
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-32 px-8 md:px-24 bg-gray-900/50 glass rounded-3xl mx-6 md:mx-20 shadow-2xl">
+    <h2 class="text-4xl font-bold text-center mb-20">Why Lumora OS?</h2>
+    <div class="grid md:grid-cols-3 gap-12">
+      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
+        <h3 class="text-2xl font-bold mb-3 text-purple-400">All-in-One</h3>
+        <p>Desktop, Server, Developer, Gamer – Lumora OS adapts to you. Everything works right out of the box.</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
+        <h3 class="text-2xl font-bold mb-3 text-purple-400">Optimized Performance</h3>
+        <p>Lightning-fast startup, minimal resource usage, and a seamless multitasking experience.</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-gray-800/60 hover:bg-gray-700/60 transition">
+        <h3 class="text-2xl font-bold mb-3 text-purple-400">Secure by Design</h3>
+        <p>Privacy-focused architecture, encrypted core updates, and state-of-the-art firewall protection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section id="showcase" class="py-32 text-center relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-purple-800/30 via-blue-700/20 to-transparent blur-3xl"></div>
+    <h2 class="text-4xl font-bold mb-12">Experience the Interface</h2>
+    <p class="text-gray-300 mb-16 max-w-3xl mx-auto text-lg">A clean, minimal, and powerful interface designed for productivity and beauty. Lumora OS redefines what Linux can look like.</p>
+    <img src="https://via.placeholder.com/1200x600/101010/FFFFFF?text=Modern+Lumora+UI" alt="Lumora OS UI" class="rounded-2xl shadow-2xl mx-auto w-3/4 hover:scale-105 transition duration-700">
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="py-32 px-6 md:px-20 bg-gradient-to-r from-purple-700 to-indigo-700 text-center rounded-t-3xl shadow-inner">
+    <h2 class="text-5xl font-bold mb-8">Download Lumora OS v1.0</h2>
+    <p class="text-lg text-gray-200 mb-16">Choose your version and start your journey today.</p>
+    <div class="flex flex-col md:flex-row justify-center gap-10">
+      <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/desktop.iso"
+         class="bg-white text-purple-700 font-bold px-10 py-5 rounded-2xl hover:bg-gray-200 transition text-lg shadow-lg transform hover:scale-105">
+         💻 Desktop Version
+      </a>
+      <a href="https://gaminghundoriginalreal.github.io/LumoraOS/download/v1.0/server.iso"
+         class="bg-gray-900 text-white font-bold px-10 py-5 rounded-2xl border border-gray-700 hover:border-white transition text-lg shadow-lg transform hover:scale-105">
+         🖥️ Server Version
+      </a>
+    </div>
+    <p class="text-sm text-gray-300 mt-8">Version 1.0 • Released 2025</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 py-12 text-center">
+    <p class="text-gray-500">&copy; 2025 Lumora OS. Built with passion and open-source power.</p>
+    <div class="flex justify-center gap-8 mt-6 text-gray-400">
+      <a href="#" class="hover:text-white transition">GitHub</a>
+      <a href="#" class="hover:text-white transition">Discord</a>
+      <a href="#" class="hover:text-white transition">Docs</a>
+    </div>
+  </footer>
+
+</body>
+</html>
