@@ -10,21 +10,19 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0f;
+      background: #000000;
       color: white;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
     
     .gradient-bg {
-      background: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.3), transparent 50%),
-                  radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.2), transparent 50%),
-                  radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.15), transparent 70%);
+      background: #000000;
     }
     
     .glass {
       backdrop-filter: blur(20px) saturate(180%);
-      background: rgba(15, 15, 25, 0.7);
+      background: rgba(10, 10, 15, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
@@ -280,7 +278,7 @@
   </section>
 
   <!-- Privacy Section -->
-  <section class="py-32 px-8 md:px-24 relative">
+  <section id="privacy" class="py-32 px-8 md:px-24 relative">
     <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-green-600/20 rounded-full blur-[120px]"></div>
     
     <div class="max-w-6xl mx-auto glass p-16 rounded-3xl border border-green-500/30">
@@ -290,46 +288,46 @@
           <span class="gradient-text">100% Private</span>
         </h2>
         <p class="text-2xl text-gray-300 font-semibold mb-4">
-          Deine Daten gehören DIR. Punkt.
+          Your data belongs to YOU. Period.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 mb-12">
         <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
-          <h3 class="text-xl font-bold text-green-400 mb-4">🚫 Keine Telemetrie</h3>
-          <p class="text-gray-300">Lumora OS sendet <span class="text-white font-bold">NULL</span> Daten nach Hause. Kein Tracking, keine Analytics, keine "anonymisierten" Statistiken.</p>
+          <h3 class="text-xl font-bold text-green-400 mb-4">🚫 Zero Telemetry</h3>
+          <p class="text-gray-300">Lumora OS sends <span class="text-white font-bold">ZERO</span> data home. No tracking, no analytics, no "anonymized" statistics.</p>
         </div>
 
         <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
-          <h3 class="text-xl font-bold text-green-400 mb-4">👤 Keine Benutzer-IDs</h3>
-          <p class="text-gray-300">Nicht einmal dein Username wird mit uns geteilt. Wir wissen buchstäblich <span class="text-white font-bold">NICHT</span>, wer du bist.</p>
+          <h3 class="text-xl font-bold text-green-400 mb-4">👤 No User IDs</h3>
+          <p class="text-gray-300">Not even your username is shared with us. We literally <span class="text-white font-bold">DON'T KNOW</span> who you are.</p>
         </div>
 
         <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
-          <h3 class="text-xl font-bold text-green-400 mb-4">🔐 Offline-Updates</h3>
-          <p class="text-gray-300">Updates können komplett offline verifiziert werden. Keine Zwangs-Accounts, keine Online-Aktivierung.</p>
+          <h3 class="text-xl font-bold text-green-400 mb-4">🔐 Offline Updates</h3>
+          <p class="text-gray-300">Updates can be verified completely offline. No forced accounts, no online activation.</p>
         </div>
 
         <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
-          <h3 class="text-xl font-bold text-green-400 mb-4">🕵️ Untrackbar</h3>
-          <p class="text-gray-300">Selbst die Entwickler von Lumora OS können dich <span class="text-white font-bold">NICHT</span> tracken oder verfolgen. Das ist unmöglich by design.</p>
+          <h3 class="text-xl font-bold text-green-400 mb-4">🕵️ Untrackable</h3>
+          <p class="text-gray-300">Even the creators of Lumora OS <span class="text-white font-bold">CANNOT</span> track or follow you. It's impossible by design.</p>
         </div>
       </div>
 
       <div class="glass p-10 rounded-2xl bg-gradient-to-r from-green-900/30 to-blue-900/30 border border-green-500/50">
-        <h3 class="text-2xl font-bold mb-4 text-center">🔓 Open Source & Auditierbar</h3>
+        <h3 class="text-2xl font-bold mb-4 text-center">🔓 Open Source & Auditable</h3>
         <p class="text-gray-300 text-center leading-relaxed">
-          Der komplette Source Code ist öffentlich einsehbar. Jeder kann verifizieren, dass keine Backdoors oder Tracking-Code existiert. 
-          <span class="block mt-4 text-green-400 font-semibold">Vertrauen ist gut, Kontrolle ist besser.</span>
+          The entire source code is publicly available. Anyone can verify that no backdoors or tracking code exists. 
+          <span class="block mt-4 text-green-400 font-semibold">Trust is good, control is better.</span>
         </p>
       </div>
 
       <div class="mt-12 text-center">
         <p class="text-gray-400 text-lg">
-          <span class="text-white font-bold">Versprochen:</span> Wir sammeln nichts. Wir speichern nichts. Wir wissen nichts über dich.
+          <span class="text-white font-bold">Our Promise:</span> We collect nothing. We store nothing. We know nothing about you.
         </p>
         <p class="text-green-400 text-xl font-bold mt-4">
-          So sollte jedes OS sein. 🌟
+          This is how every OS should be. 🌟
         </p>
       </div>
     </div>
