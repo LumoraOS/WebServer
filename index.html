@@ -14,32 +14,43 @@
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         @keyframes glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
         @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .float-animation { animation: float 6s ease-in-out infinite; }
         .glow-pulse { animation: glow 3s ease-in-out infinite; }
         .slide-in { animation: slideInUp 0.8s ease-out forwards; }
+        .pulse-animation { animation: pulse 2s ease-in-out infinite; }
         .gradient-text { background: linear-gradient(135deg, #a855f7, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .shimmer-text { background: linear-gradient(90deg, #a855f7 0%, #3b82f6 50%, #a855f7 100%); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
         .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: float 8s ease-in-out infinite; }
         .orb-1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent); top: 10%; left: 10%; }
         .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent); bottom: 20%; right: 10%; animation-delay: -4s; }
-        .feature-card { position: relative; overflow: hidden; }
+        .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent); top: 50%; right: 20%; animation-delay: -2s; }
+        .feature-card { position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .feature-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent); transition: left 0.5s; }
         .feature-card:hover::before { left: 100%; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2); }
         .btn-primary { position: relative; overflow: hidden; transition: all 0.3s; }
         .btn-primary::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.2); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
         .btn-primary:hover::before { width: 300px; height: 300px; }
-        .nav-link { position: relative; }
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+        .nav-link { position: relative; transition: color 0.3s; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #a855f7, #3b82f6); transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #a855f7; }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .rotate-slow { animation: rotate 20s linear infinite; }
         .perspective-card { transform-style: preserve-3d; transition: transform 0.6s; }
-        .perspective-card:hover { transform: rotateY(5deg) rotateX(5deg); }
+        .perspective-card:hover { transform: rotateY(5deg) rotateX(5deg) scale(1.05); }
+        .hover-glow { transition: box-shadow 0.3s; }
+        .hover-glow:hover { box-shadow: 0 0 30px rgba(168, 85, 247, 0.3); }
     </style>
 </head>
 <body class="gradient-bg">
     <!-- Animated Background Orbs -->
     <div class="orb orb-1 -z-10"></div>
     <div class="orb orb-2 -z-10"></div>
+    <div class="orb orb-3 -z-10"></div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full glass z-50 flex justify-between items-center px-8 py-4 transition-all duration-300">
@@ -64,7 +75,7 @@
                 <span class="text-purple-400 font-semibold">✨ Version 1.0 Now Available</span>
             </div>
         </div>
-        <h1 class="text-7xl md:text-8xl font-black mb-6 slide-in" style="animation-delay: 0.2s; opacity: 0;">
+        <h1 class="text-7xl md:text-8xl font-black mb-6 slide-in shimmer-text" style="animation-delay: 0.2s; opacity: 0;">
             Lumora <span class="gradient-text">OS</span>
         </h1>
         <p class="text-xl md:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto slide-in" style="animation-delay: 0.3s; opacity: 0;">
@@ -78,7 +89,7 @@
         </div>
         <div class="mt-24 flex justify-center slide-in" style="animation-delay: 0.5s; opacity: 0;">
             <div class="relative float-animation">
-                <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-50"></div>
+                <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-50 pulse-animation"></div>
                 <img src="https://via.placeholder.com/1200x600/0f0f19/FFFFFF?text=Lumora+OS+Desktop" alt="Lumora OS Desktop" class="relative rounded-3xl shadow-2xl w-full max-w-5xl border border-purple-500/30 perspective-card">
             </div>
         </div>
@@ -87,15 +98,15 @@
     <!-- Stats Section -->
     <section class="py-24 px-8">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300 hover-glow">
                 <div class="text-5xl font-black gradient-text mb-2">10K+</div>
                 <div class="text-gray-400">Active Users</div>
             </div>
-            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300 hover-glow">
                 <div class="text-5xl font-black gradient-text mb-2">99.9%</div>
                 <div class="text-gray-400">Uptime</div>
             </div>
-            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300">
+            <div class="glass p-8 rounded-2xl hover:scale-105 transition duration-300 hover-glow">
                 <div class="text-5xl font-black gradient-text mb-2">0.5s</div>
                 <div class="text-gray-400">Boot Time</div>
             </div>
@@ -105,8 +116,8 @@
     <!-- Features -->
     <section id="features" class="py-32 px-8 md:px-24 relative">
         <div class="absolute top-1/2 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]"></div>
-        <h2 class="text-5xl md:text-6xl font-black text-center mb-8"> Why <span class="gradient-text">Lumora OS</span>? </h2>
-        <p class="text-center text-gray-400 text-lg mb-20 max-w-2xl mx-auto"> Built for developers, designers, and power users who demand the best. </p>
+        <h2 class="text-5xl md:text-6xl font-black text-center mb-8 shimmer-text">Why <span class="gradient-text">Lumora OS</span>?</h2>
+        <p class="text-center text-gray-400 text-lg mb-20 max-w-2xl mx-auto">Built for developers, designers, and power users who demand the best.</p>
         <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <div class="feature-card glass p-10 rounded-3xl hover:scale-105 transition duration-500 hover:border-purple-500/50">
                 <div class="text-5xl mb-6">🚀</div>
@@ -129,37 +140,37 @@
     <!-- Privacy Section -->
     <section id="privacy" class="py-32 px-8 md:px-24 relative">
         <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-green-600/20 rounded-full blur-[120px]"></div>
-        <div class="max-w-6xl mx-auto glass p-16 rounded-3xl border border-green-500/30">
+        <div class="max-w-6xl mx-auto glass p-16 rounded-3xl border border-green-500/30 hover-glow">
             <div class="text-center mb-16">
-                <div class="text-6xl mb-6">🛡️</div>
-                <h2 class="text-5xl md:text-6xl font-black mb-6"> <span class="gradient-text">100% Private</span> </h2>
-                <p class="text-2xl text-gray-300 font-semibold mb-4"> Your data belongs to YOU. Period. </p>
+                <div class="text-6xl mb-6 pulse-animation">🛡️</div>
+                <h2 class="text-5xl md:text-6xl font-black mb-6 shimmer-text"><span class="gradient-text">100% Private</span></h2>
+                <p class="text-2xl text-gray-300 font-semibold mb-4">Your data belongs to YOU. Period.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition hover-glow">
                     <h3 class="text-xl font-bold text-green-400 mb-4">🚫 Zero Telemetry</h3>
                     <p class="text-gray-300">Lumora OS sends <span class="text-white font-bold">ZERO</span> data home. No tracking, no analytics, no "anonymized" statistics.</p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition hover-glow">
                     <h3 class="text-xl font-bold text-green-400 mb-4">👤 No User IDs</h3>
                     <p class="text-gray-300">Not even your username is shared with us. We literally <span class="text-white font-bold">DON'T KNOW</span> who you are.</p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition hover-glow">
                     <h3 class="text-xl font-bold text-green-400 mb-4">🔐 Offline Updates</h3>
                     <p class="text-gray-300">Updates can be verified completely offline. No forced accounts, no online activation.</p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-green-500/20 hover:border-green-500/50 transition hover-glow">
                     <h3 class="text-xl font-bold text-green-400 mb-4">🕵️ Untrackable</h3>
                     <p class="text-gray-300">Even the creators of Lumora OS <span class="text-white font-bold">CANNOT</span> track or follow you. It's impossible by design.</p>
                 </div>
             </div>
-            <div class="glass p-10 rounded-2xl bg-gradient-to-r from-green-900/30 to-blue-900/30 border border-green-500/50">
+            <div class="glass p-10 rounded-2xl bg-gradient-to-r from-green-900/30 to-blue-900/30 border border-green-500/50 hover-glow">
                 <h3 class="text-2xl font-bold mb-4 text-center">🔓 Completely Private</h3>
-                <p class="text-gray-300 text-center leading-relaxed"> No backdoors, no hidden trackers, no surveillance. Your system, your rules. <span class="block mt-4 text-green-400 font-semibold">Privacy is not optional. It's built-in.</span> </p>
+                <p class="text-gray-300 text-center leading-relaxed">No backdoors, no hidden trackers, no surveillance. Your system, your rules. <span class="block mt-4 text-green-400 font-semibold">Privacy is not optional. It's built-in.</span></p>
             </div>
             <div class="mt-12 text-center">
-                <p class="text-gray-400 text-lg"> <span class="text-white font-bold">Our Promise:</span> We collect nothing. We store nothing. We know nothing about you. </p>
-                <p class="text-green-400 text-xl font-bold mt-4"> This is how every OS should be. 🌟 </p>
+                <p class="text-gray-400 text-lg"><span class="text-white font-bold">Our Promise:</span> We collect nothing. We store nothing. We know nothing about you.</p>
+                <p class="text-green-400 text-xl font-bold mt-4">This is how every OS should be. 🌟</p>
             </div>
         </div>
     </section>
@@ -167,33 +178,33 @@
     <!-- Info Section -->
     <section id="info" class="py-32 px-8 md:px-24 relative">
         <div class="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
-        <div class="max-w-5xl mx-auto glass p-16 rounded-3xl border border-blue-500/30">
+        <div class="max-w-5xl mx-auto glass p-16 rounded-3xl border border-blue-500/30 hover-glow">
             <div class="text-center mb-12">
-                <div class="text-6xl mb-6">ℹ️</div>
-                <h2 class="text-5xl md:text-6xl font-black mb-6"> <span class="gradient-text">System Information</span> </h2>
+                <div class="text-6xl mb-6 pulse-animation">ℹ️</div>
+                <h2 class="text-5xl md:text-6xl font-black mb-6 shimmer-text"><span class="gradient-text">System Information</span></h2>
             </div>
             <div class="space-y-8">
-                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition hover-glow">
                     <h3 class="text-2xl font-bold text-blue-400 mb-4">🐧 Built on Ubuntu – Without the Bloat</h3>
                     <p class="text-gray-300 leading-relaxed">
-                        Lumora OS is built on the rock-solid Ubuntu foundation but strips away <span class="text-white font-bold">all</span> typical Ubuntu bloatware. 
-                        Pre-installed apps, Snap daemons, telemetry, Amazon links, unnecessary services, and any other junk are ruthlessly removed. 
+                        Lumora OS is built on the rock-solid Ubuntu foundation but strips away <span class="text-white font-bold">all</span> typical Ubuntu bloatware.
+                        Pre-installed apps, Snap daemons, telemetry, Amazon links, unnecessary services, and any other junk are ruthlessly removed.
                         You get a <span class="text-white font-bold">clean, minimal, and highly optimized</span> system — only what you actually need.
                     </p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition hover-glow">
                     <h3 class="text-2xl font-bold text-blue-400 mb-4">📦 Package Management</h3>
-                    <p class="text-gray-300 leading-relaxed"> 
+                    <p class="text-gray-300 leading-relaxed">
                         Full compatibility with Ubuntu’s APT package manager and optional Snap support. Access thousands of apps from the Ubuntu repositories — without forced Snaps or bloat.
                     </p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition hover-glow">
                     <h3 class="text-2xl font-bold text-blue-400 mb-4">🔄 System Updates</h3>
-                    <p class="text-gray-300 leading-relaxed"> 
+                    <p class="text-gray-300 leading-relaxed">
                         Regular security updates and improvements based on Ubuntu’s LTS cycle. Stay secure and up-to-date — without unnecessary overhead.
                     </p>
                 </div>
-                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition">
+                <div class="glass p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/50 transition hover-glow">
                     <h3 class="text-2xl font-bold text-blue-400 mb-4">⚙️ System Requirements</h3>
                     <div class="text-gray-300 space-y-2 mt-4">
                         <p><span class="text-white font-semibold">• CPU:</span> 64-bit processor (1 GHz or faster)</p>
@@ -212,8 +223,8 @@
     <!-- Showcase -->
     <section id="showcase" class="py-32 text-center relative px-6">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]"></div>
-        <h2 class="text-5xl md:text-6xl font-black mb-6"> Experience the <span class="gradient-text">Interface</span> </h2>
-        <p class="text-gray-300 mb-20 max-w-3xl mx-auto text-lg leading-relaxed"> A clean, minimal, and powerful interface designed for productivity and beauty. Lumora OS redefines what Linux can look like. </p>
+        <h2 class="text-5xl md:text-6xl font-black mb-6 shimmer-text">Experience the <span class="gradient-text">Interface</span></h2>
+        <p class="text-gray-300 mb-20 max-w-3xl mx-auto text-lg leading-relaxed">A clean, minimal, and powerful interface designed for productivity and beauty. Lumora OS redefines what Linux can look like.</p>
         <div class="relative max-w-6xl mx-auto">
             <div class="absolute -inset-6 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 rounded-3xl blur-3xl opacity-30 rotate-slow"></div>
             <img src="https://via.placeholder.com/1200x600/0a0a0f/FFFFFF?text=Modern+Lumora+UI" alt="Lumora OS UI" class="relative rounded-3xl shadow-2xl w-full border border-purple-500/30 hover:scale-105 transition duration-700 perspective-card">
@@ -225,13 +236,13 @@
         <div class="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-blue-900/30 to-transparent"></div>
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[150px]"></div>
         <div class="relative z-10 text-center">
-            <h2 class="text-5xl md:text-7xl font-black mb-6"> Download <span class="gradient-text">Lumora OS</span> </h2>
-            <p class="text-xl text-gray-300 mb-16 max-w-2xl mx-auto"> Start your journey today. Free and open-source forever. </p>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 shimmer-text">Download <span class="gradient-text">Lumora OS</span></h2>
+            <p class="text-xl text-gray-300 mb-16 max-w-2xl mx-auto">Start your journey today. Free and open-source forever.</p>
 
-            <!-- Downloads: Desktop, Server, Gaming (Coming Soon) -->
-            <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            <!-- Downloads -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
                 <!-- Desktop Edition -->
-                <a href="https://cdn.bigfox24.site/LumoraOS/Download/Release/v1.0/LumoraDesktop.iso" class="btn-primary glass p-12 rounded-3xl hover:scale-105 transition duration-300 border-2 border-purple-500/50 hover:border-purple-400 group">
+                <a href="https://cdn.bigfox24.site/LumoraOS/Download/Release/v1.0/LumoraDesktop.iso" class="btn-primary glass p-12 rounded-3xl hover:scale-105 transition duration-300 border-2 border-purple-500/50 hover:border-purple-400 group hover-glow">
                     <div class="text-6xl mb-6 group-hover:scale-110 transition duration-300">💻</div>
                     <div class="text-3xl font-bold mb-3">Lumora OS</div>
                     <div class="text-gray-400 text-lg mb-4">Desktop Edition</div>
@@ -241,7 +252,7 @@
                 </a>
 
                 <!-- Server Edition -->
-                <a href="https://cdn.bigfox24.site/LumoraOS/Download/Release/v1.0/Server.iso" class="btn-primary glass p-12 rounded-3xl hover:scale-105 transition duration-300 border-2 border-blue-500/50 hover:border-blue-400 group">
+                <a href="https://cdn.bigfox24.site/LumoraOS/Download/Release/v1.0/Server.iso" class="btn-primary glass p-12 rounded-3xl hover:scale-105 transition duration-300 border-2 border-blue-500/50 hover:border-blue-400 group hover-glow">
                     <div class="text-6xl mb-6 group-hover:scale-110 transition duration-300">🖥️</div>
                     <div class="text-3xl font-bold mb-3">Lumora OS</div>
                     <div class="text-gray-400 text-lg mb-4">Server Edition</div>
@@ -251,13 +262,11 @@
                 </a>
 
                 <!-- Gaming Edition (Coming Soon) -->
-                <div class="glass p-12 rounded-3xl border-2 border-gray-600 opacity-80">
+                <div class="glass p-12 rounded-3xl border-2 border-gray-600 opacity-80 hover-glow">
                     <div class="text-6xl mb-6 text-gray-500">🎮</div>
                     <div class="text-3xl font-bold mb-3 text-gray-300">Lumora OS</div>
                     <div class="text-gray-400 text-lg mb-4">Gaming Edition</div>
-                    <div class="text-gray-500 text-sm font-semibold mb-4">
-                        Coming in 2027
-                    </div>
+                    <div class="text-gray-500 text-sm font-semibold mb-4">Coming in 2027</div>
                     <div class="text-gray-400 text-sm space-y-2 text-left max-w-xs mx-auto">
                         <p>• Ultra-lightweight build: ~1 GB RAM usage & only 10 GB disk space</p>
                         <p>• Custom installer lets you choose exactly what you want (Steam, Proton, Lutris, GameMode, drivers, etc.)</p>
@@ -267,15 +276,29 @@
                         <p>• Zero bloat — pure gaming performance</p>
                     </div>
                 </div>
+
+                <!-- LumoraPrivacy Edition (Coming Soon) -->
+                <div class="glass p-12 rounded-3xl border-2 border-gray-600 opacity-80 hover-glow">
+                    <div class="text-6xl mb-6 text-gray-500">🕵️</div>
+                    <div class="text-3xl font-bold mb-3 text-gray-300">LumoraPrivacy</div>
+                    <div class="text-gray-400 text-lg mb-4">Privacy Edition</div>
+                    <div class="text-gray-500 text-sm font-semibold mb-4">Coming in 2027</div>
+                    <div class="text-gray-400 text-sm space-y-2 text-left max-w-xs mx-auto">
+                        <p>• Null nachverfolgbar – absolut keine Spuren</p>
+                        <p>• Funktioniert komplett im Offline-Betrieb</p>
+                        <p>• Keine Telemetrie, kein Tracking, kein Internet nötig</p>
+                        <p>• Eingebaute starke Verschlüsselung & Anonymisierung</p>
+                        <p>• Minimaler Footprint mit maximalem Privacy-Schutz</p>
+                        <p>• Offline-Updates und Verifizierung</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Release Notes Button -->
             <div class="mt-12 flex justify-center gap-8 flex-wrap">
-                <a href="/release.html" class="inline-block bg-gray-800/50 hover:bg-gray-700/70 border border-gray-600 hover:border-gray-500 text-white font-semibold px-10 py-4 rounded-full text-lg transition-all duration-300 backdrop-blur-sm">
+                <a href="/release.html" class="inline-block bg-gray-800/50 hover:bg-gray-700/70 border border-gray-600 hover:border-gray-500 text-white font-semibold px-10 py-4 rounded-full text-lg transition-all duration-300 backdrop-blur-sm hover-glow">
                     📝 View Release Notes
                 </a>
             </div>
-
             <p class="text-sm text-gray-500 mt-12">Version 1.0 • Released January 2026 • Desktop: 5.8 GB • Server: 4.2 GB</p>
         </div>
     </section>
