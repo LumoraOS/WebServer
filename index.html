@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LumoraOS — Project Status</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="LumoraOS has been discontinued. Read the official statement and FAQ." />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --muted: #a78bfa;
+      --text: #f3f3f3;
+      --ring: rgba(168,85,247,0.25);
+      --radius: 22px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: system-ui;
+    }
+
+    .bgfx {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, #7c3aed 0%, transparent 60%),
+        radial-gradient(800px 400px at 80% 20%, #a855f7 0%, transparent 60%),
+        radial-gradient(800px 600px at 20% 80%, #c084fc 0%, transparent 60%);
+      opacity: .35;
+    }
+
+    .container { max-width: 1000px; margin:auto; padding:20px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-top: 20px;
+    }
+
+    h2 { font-size: 32px; margin-bottom:10px; }
+    h3 { margin-bottom:10px; }
+    p { color:#ddd; }
+
+    .chip {
+      border:1px solid var(--border);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      margin-right:6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bgfx"></div>
+
+<div class="container">
+
+  <!-- MAIN -->
+  <div class="card">
+    <h2>LumoraOS has been discontinued.</h2>
+    <p>
+      LumoraOS is no longer under active development and will most likely
+      <strong>never return</strong>.
+    </p>
+
+    <p>
+      The main reason is that the system relies on a <strong>closed-source kernel</strong>,
+      which makes further development extremely complex and time-consuming.
+      Maintaining, updating, and expanding LumoraOS under these conditions
+      is not realistically sustainable for the development team.
+    </p>
+
+    <div style="margin-top:15px;">
+      <span class="chip">Status: Discontinued</span>
+      <span class="chip">Kernel: Closed Source</span>
+      <span class="chip">Future: Unlikely</span>
+    </div>
+  </div>
+
+  <!-- STATEMENT -->
+  <div class="card">
+    <h3>Official Statement</h3>
+
+    <p>
+      LumoraOS started as an ambitious project with the goal of creating
+      something unique and powerful. Over time, however, the technical
+      limitations caused by the non-open-source kernel became a major barrier.
+    </p>
+
+    <p>
+      Continuing development would require a disproportionate amount of effort
+      for relatively little progress. As a result, the developers have decided
+      to stop working on the project indefinitely.
+    </p>
+
+    <p>
+      At this point, there are no plans for a rewrite, fork, or successor.
+    </p>
+
+    <p>
+      — LumoraOS Development Team
+    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <h3>FAQ</h3>
+
+    <p><strong>Why was LumoraOS discontinued?</strong><br>
+    Due to the closed-source kernel and the excessive development effort required.</p>
+
+    <p><strong>Will LumoraOS come back?</strong><br>
+    Very unlikely.</p>
+
+    <p><strong>Will it become open-source?</strong><br>
+    No, the kernel restrictions prevent that.</p>
+
+    <p><strong>Will there be alternatives?</strong><br>
+    Not from the original developers.</p>
+  </div>
+
+  <div style="text-align:center; margin-top:20px; font-size:12px; color:#888;">
+    © 2026 LumoraOS — Project Status
+  </div>
+
+</div>
+
+</body>
+</html>
