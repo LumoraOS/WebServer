@@ -1,136 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LumoraOS — Project Status</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="description" content="LumoraOS has been discontinued. Read the official statement and FAQ." />
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --card: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.12);
-      --muted: #a78bfa;
-      --text: #f3f3f3;
-      --ring: rgba(168,85,247,0.25);
-      --radius: 22px;
-      --shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LumoraOS — Discontinued</title>
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--text);
-      background: var(--bg);
-      font-family: system-ui;
-    }
+<style>
+:root {
+  --bg: #050507;
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.12);
+  --text: #f5f3ff;
+  --muted: #a78bfa;
+  --accent: #8b5cf6;
+  --radius: 24px;
+}
 
-    .bgfx {
-      position: fixed; inset: 0; z-index: -1;
-      background:
-        radial-gradient(1200px 600px at 50% -10%, #7c3aed 0%, transparent 60%),
-        radial-gradient(800px 400px at 80% 20%, #a855f7 0%, transparent 60%),
-        radial-gradient(800px 600px at 20% 80%, #c084fc 0%, transparent 60%);
-      opacity: .35;
-    }
+/* RESET */
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
 
-    .container { max-width: 1000px; margin:auto; padding:20px; }
+/* ANIMATED GRID BACKGROUND */
+.grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(168,85,247,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveGrid 20s linear infinite;
+}
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      margin-top: 20px;
-    }
+@keyframes moveGrid {
+  from { transform: translateY(0); }
+  to { transform: translateY(40px); }
+}
 
-    h2 { font-size: 32px; margin-bottom:10px; }
-    h3 { margin-bottom:10px; }
-    p { color:#ddd; }
+/* GLOW BACKGROUND */
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 20% 20%, #7c3aed 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, #a855f7 0%, transparent 40%);
+  opacity: 0.25;
+}
 
-    .chip {
-      border:1px solid var(--border);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      margin-right:6px;
-    }
-  </style>
+/* LAYOUT */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.badge {
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+}
+
+/* GLASS CARD */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 0 40px rgba(168,85,247,0.05);
+  margin-bottom: 20px;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #ddd;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+/* STATUS CHIPS */
+.chips {
+  margin-top: 15px;
+}
+.chip {
+  display:inline-block;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-right: 8px;
+  backdrop-filter: blur(10px);
+}
+
+/* GRID FAQ */
+.grid-2 {
+  display:grid;
+  gap:20px;
+}
+@media(min-width:800px){
+  .grid-2 { grid-template-columns:1fr 1fr; }
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #888;
+}
+</style>
 </head>
+
 <body>
 
-<div class="bgfx"></div>
+<div class="glow"></div>
+<div class="grid"></div>
 
 <div class="container">
 
-  <!-- MAIN -->
+<header>
+  <div class="logo">LumoraOS</div>
+  <div class="badge">Official Notice</div>
+</header>
+
+<!-- MAIN -->
+<div class="card">
+  <h1>LumoraOS has been discontinued.</h1>
+
+  <p>
+    LumoraOS is no longer under active development and is considered
+    <strong>permanently discontinued</strong>.
+  </p>
+
+  <p>
+    This decision was made due to a combination of technical and operational limitations.
+    The system relies on a <strong>closed-source kernel</strong>, which significantly
+    restricts development flexibility and makes long-term maintenance increasingly difficult.
+  </p>
+
+  <p>
+    Additionally, the ongoing <strong>server infrastructure costs</strong>, maintenance overhead,
+    and required development resources are no longer sustainable for the team.
+  </p>
+
+  <div class="chips">
+    <span class="chip">Status: Discontinued</span>
+    <span class="chip">Kernel: Closed Source</span>
+    <span class="chip">Reason: Server Costs</span>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<div class="card">
+  <h2>Official Statement</h2>
+
+  <p>
+    LumoraOS began as an ambitious project aiming to deliver a unique and advanced system experience.
+    Over time, however, core architectural limitations and rising operational costs created barriers
+    that could not be reasonably overcome.
+  </p>
+
+  <p>
+    Continuing development would require a complete redesign of critical components,
+    alongside significant financial and time investment. As a result, the project has been
+    officially discontinued.
+  </p>
+
+  <p>
+    There are currently no plans for a relaunch, rewrite, or successor project.
+  </p>
+
+  <p>— LumoraOS Development Team</p>
+</div>
+
+<!-- FAQ -->
+<div class="grid-2">
+
   <div class="card">
-    <h2>LumoraOS has been discontinued.</h2>
+    <h2>Why was LumoraOS discontinued?</h2>
     <p>
-      LumoraOS is no longer under active development and will most likely
-      <strong>never return</strong>.
+      Due to a combination of a closed-source kernel, high development complexity,
+      and unsustainable server and infrastructure costs.
     </p>
-
-    <p>
-      The main reason is that the system relies on a <strong>closed-source kernel</strong>,
-      which makes further development extremely complex and time-consuming.
-      Maintaining, updating, and expanding LumoraOS under these conditions
-      is not realistically sustainable for the development team.
-    </p>
-
-    <div style="margin-top:15px;">
-      <span class="chip">Status: Discontinued</span>
-      <span class="chip">Kernel: Closed Source</span>
-      <span class="chip">Future: Unlikely</span>
-    </div>
   </div>
 
-  <!-- STATEMENT -->
   <div class="card">
-    <h3>Official Statement</h3>
-
+    <h2>Will LumoraOS return?</h2>
     <p>
-      LumoraOS started as an ambitious project with the goal of creating
-      something unique and powerful. Over time, however, the technical
-      limitations caused by the non-open-source kernel became a major barrier.
-    </p>
-
-    <p>
-      Continuing development would require a disproportionate amount of effort
-      for relatively little progress. As a result, the developers have decided
-      to stop working on the project indefinitely.
-    </p>
-
-    <p>
-      At this point, there are no plans for a rewrite, fork, or successor.
-    </p>
-
-    <p>
-      — LumoraOS Development Team
+      No. The project is considered permanently discontinued with no planned revival.
     </p>
   </div>
 
-  <!-- FAQ -->
   <div class="card">
-    <h3>FAQ</h3>
-
-    <p><strong>Why was LumoraOS discontinued?</strong><br>
-    Due to the closed-source kernel and the excessive development effort required.</p>
-
-    <p><strong>Will LumoraOS come back?</strong><br>
-    Very unlikely.</p>
-
-    <p><strong>Will it become open-source?</strong><br>
-    No, the kernel restrictions prevent that.</p>
-
-    <p><strong>Will there be alternatives?</strong><br>
-    Not from the original developers.</p>
+    <h2>Will it become open-source?</h2>
+    <p>
+      No. The underlying kernel restrictions prevent this from being possible.
+    </p>
   </div>
 
-  <div style="text-align:center; margin-top:20px; font-size:12px; color:#888;">
-    © 2026 LumoraOS — Project Status
+  <div class="card">
+    <h2>Is there a successor project?</h2>
+    <p>
+      No. There are currently no alternative or follow-up projects planned by the team.
+    </p>
   </div>
+
+</div>
+
+<footer>
+  © 2026 LumoraOS — Official Project Status
+</footer>
 
 </div>
 
